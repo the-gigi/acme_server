@@ -76,7 +76,6 @@ setup(
     # List run-time dependencies here.  These will be installed by pip when your
     # project is installed.
     install_requires = [
-        'acme_db>=0.1'
     ],
 
     # If there are data files included in your packages that need to be

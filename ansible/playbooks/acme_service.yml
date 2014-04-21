@@ -1,0 +1,5 @@
+---
+- hosts: service
+  roles:
+    - provision_service
+    - deploy_service

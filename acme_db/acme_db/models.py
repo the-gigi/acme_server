@@ -23,13 +23,17 @@ class Alien(Base):
     __tablename__ = 'alien'
 
     id = Column(Integer, primary_key=True)
-    type = Column(String(64), nullable=False)
+    name = Column(String(64), nullable=False, unique=True)
     abducted = Column(Boolean, default=False, index=True)
     probed = Column(Boolean, default=False, index=True)
 
-class ProbeResult(Base):
-    __tablename__ = 'probe_result'
+
+class ProbeReport(Base):
+    __tablename__ = 'probe_report'
 
     id = Column(Integer, primary_key=True)
     alien_id = Column(ForeignKey('alien.id'), index=True)
     info = Column(String(1024), nullable=False)
+
+    alien = relationship('Alien')
+

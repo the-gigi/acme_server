@@ -1,0 +1,8 @@
+---
+
+# ansible-playbook -i <inventory> playbooks/acme_db.yml -u <user>
+
+- hosts: db
+  sudo: yes
+  roles:
+    - mysql
