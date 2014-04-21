@@ -1,11 +1,12 @@
 from acme_db import db
 from random import random
 from acme_db import models
+from datetime import datetime
 
 
 class AlienAbductionManager(object):
     def __init__(self):
-        self.session = db.get_session()
+        pass
 
     def get_aliens(self, start, end):
         """Get aliens that were scanned into the system
@@ -15,7 +16,9 @@ class AlienAbductionManager(object):
 
         Return only aliens who were scanned in the given time range
         """
-        pass
+        q = db.get_session().query
+        m = models.Alien
+        return q(m).filter((start <= m.created) & (m.created < end)).all()
 
     def abduct_alien(self, alien_name):
         """Abduct an alien
@@ -24,16 +27,17 @@ class AlienAbductionManager(object):
         If the alien is not in the DB or already abducted
         raise an exception
         """
-        q = self.session.query
-        a = q(models.Alien).filter_by(name=alien_name, abducted=False).scalar()
+        s = db.get_session()
+        q = s.query
+        a = q(models.Alien).filter_by(name=alien_name, abducted=None).scalar()
         if not a:
             raise Exception('Alien is not in DB or already abducted')
         # Try to abduct alien (78% of failure)
         if random() < 0.78:
             return False
 
-        a.abducted = True
-        self.session.commit()
+        a.abducted = datetime.utcnow()
+        s.commit()
         return True
 
     def probe_alien(self, alien_name):
@@ -44,20 +48,24 @@ class AlienAbductionManager(object):
 
         A probe generate a ProbeReport record
         """
-        q = self.session.query
-        a = q(models.Alien).filter_by(name=alien_name,
-                                      abducted=True,
-                                      probed=False).scalar()
+        s = db.get_session()
+        q = db.get_session().query
+        m = models.Alien
+        a = q(m).filter((m.name == alien_name) &
+                        (m.abducted is not None)).scalar()
         if not a:
-            raise Exception('Alien is not in DB or not abducted ' +
-                            'or probed already')
+            raise Exception('Alien is not in DB or not abducted yet')
 
-        a.probed = True
+        report = q(models.ProbeReport).filter_by(alien=a).scalar()
+        if report:
+            raise Exception('Alien has already been probed')
+
         report = models.ProbeReport()
-        report.alien = a
+        report.alien_id = a.id
         report.info = 'bla bla bla'
-
-        self.session.commit()
+        report.created = datetime.utcnow()
+        s.add(report)
+        s.commit()
 
 
 

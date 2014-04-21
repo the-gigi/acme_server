@@ -3,7 +3,7 @@ import uuid
 from acme_db import db, models
 import time
 import sys
-
+from datetime import datetime
 
 def locate_alien():
     """Locate an alien and add it to the DB
@@ -21,6 +21,7 @@ def locate_alien():
     # Add to DB
     a = models.Alien()
     a.name = alien_name
+    a.created = datetime.utcnow()
 
     session.add(a)
     session.commit()
