@@ -12,11 +12,12 @@ The "server" has multiple components that serve different purposes:
 1. acme_db - in charge of storing the alien abduction and probing data
 2. acme_service - the backend service in charge of all the logic
 3. acme_api - a REST API to expose the acme_service to the world
-4. acme_sdk - a Python client library that wraps the API
-5. acme_integration_tests
+4. acme_sdk - a Python client library that provides read-only access to DB
+5. acme_integration_tests - tests of multiple components
+6. acme_system_tests - whole system tests (end-to-end workflow, load, etc)
 
-Each of these components is a Python package. The packages follow roughly the
-guidelines here: https://python-packaging-user-guide.readthedocs.org
+Most of these components are Python packages. The packages follow roughly
+the guidelines here: https://python-packaging-user-guide.readthedocs.org
 
 
 

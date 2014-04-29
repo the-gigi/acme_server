@@ -1,7 +1,7 @@
-from acme_db import db
 from random import random
-from acme_db import models
 from datetime import datetime
+from acme_db import db
+from acme_db import models
 
 
 class AlienAbductionManager(object):
