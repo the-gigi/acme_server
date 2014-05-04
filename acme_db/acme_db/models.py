@@ -27,6 +27,12 @@ class Alien(Base):
     created = Column(DateTime, nullable=False)
     abducted = Column(DateTime, nullable=True)
 
+    def serialize(self):
+        return dict(id=self.id,
+                    name=self.name,
+                    created=str(self.created),
+                    abducted=str(self.abducted))
+
 
 class ProbeReport(Base):
     __tablename__ = 'probe_report'
@@ -37,4 +43,10 @@ class ProbeReport(Base):
     created = Column(DateTime, nullable=False)
 
     alien = relationship('Alien')
+
+    def serialize(self):
+        return dict(id=self.id,
+                    alien_id=self.alien_id,
+                    info=self.info,
+                    created=str(self.created))
 
