@@ -14,7 +14,7 @@ def create_app(conf):
     app.config.from_object(conf)
     api = restful.Api(app)
     api.add_resource(Aliens, '/v1/aliens')
-    api.add_resource(ProbeReport, '/v1/report/')
+    api.add_resource(ProbeReport, '/v1/report')
     db.init(app.config['DB_URI'])
 
     return app
@@ -40,8 +40,16 @@ class Aliens(restful.Resource):
 class ProbeReport(restful.Resource):
     def get(self):
         q = db.get_session().query
-        a = request.args # short name for the request argument dictionary
-        result = []
+        parser = reqparse.RequestParser()
+        parser.add_argument('alien_name',
+                            type=str,
+                            help='name of probed alien')
+        args = parser.parse_args()
+        alien = q(models.Alien).filter_by(name=args['alien_name']).one()
+
+        report = q(models.ProbeReport).filter_by(alien=alien).one()
+
+        result = jsonify(result=report.serialize())
         return result
 
 
