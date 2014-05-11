@@ -2,7 +2,6 @@ import json
 import os
 import sys
 from acme_db import db, models
-from acme_service.service import AlienAbductionManager
 
 from unittest import TestCase
 from datetime import datetime, timedelta

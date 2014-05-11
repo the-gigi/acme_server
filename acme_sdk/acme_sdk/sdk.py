@@ -2,11 +2,7 @@ from acme_db import db
 from acme_db import models
 
 
-def get_aliens_paged(first_id=None):
-    pass
-
-
-def get_alien(alien_name):
+def get_aliens_paged(first_id=0):
     pass
 
 

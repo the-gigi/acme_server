@@ -4,3 +4,8 @@
     - base_server
     - provision_service
     - deploy_service
+
+  vars:
+    user: acme
+    app_name: acme_api
+

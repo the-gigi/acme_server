@@ -5,4 +5,5 @@
 - hosts: db
   sudo: yes
   roles:
+    - base_server
     - mysql
