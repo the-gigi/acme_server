@@ -1,12 +1,12 @@
 from unittest import TestCase
 
 
-class LoadTest(TestCase):
+class WorkflowTest(TestCase):
     def setUp(self):
         """
         """
 
-    def test_load(self):
+    def test_workflow(self):
         """
         """
 
