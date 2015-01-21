@@ -2,7 +2,9 @@ acme_server
 ===========
 The acme_server is a potentially complex distributed system based on Python.
 Its purpose is to demonstrate how to deploy such a system to various
-environments and how to test all the components.
+environments and how to test all the components. I wrote an article to Dr. Dobbs
+and intended to use code as a live example, but in the end I had too much to
+write about and not enough room to show example code. You can find the article is here: [Testing Complex Systems](http://www.drdobbs.com/testing/testing-complex-systems/240168390?pgno=1).
 
 ACME(tm) is your typical sinister corporation. Their main business as you
 would expect is alien abduction.
