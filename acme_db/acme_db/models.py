@@ -4,13 +4,8 @@ import datetime
 from sqlalchemy import (Column,
                         DateTime,
                         ForeignKey,
-                        Index,
                         Integer,
-                        Numeric,
-                        String,
-                        Enum,
-                        Boolean,
-                        UniqueConstraint)
+                        String)
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 
