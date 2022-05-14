@@ -8,7 +8,7 @@ write about and not enough room to show example code.
 
 The [link]((http://www.drdobbs.com/testing/testing-complex-systems/240168390?pgno=1).) to the article on Dr.Dobbs is broken.
 
-Fortunately, I saved a local copy as a markdown file: [Testing Complex Systems](artcile.md)
+Fortunately, I saved a local copy as a markdown file: [Testing Complex Systems](article.md)
 
 ACME(tm) is your typical sinister corporation. Their main business as you
 would expect is alien abduction.
