@@ -1,5 +1,5 @@
 acme_db==0.2
 Flask-RESTful==0.3.10
 flask-restful-swagger==0.20.1
-PyYAML==5.4
+PyYAML==6.0.3
 uWSGI==2.0.31
